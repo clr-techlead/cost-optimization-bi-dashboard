@@ -1,0 +1,54 @@
+name: Data Quality Check
+
+on:
+  push:
+    paths:
+      - 'data/expenses.csv'
+      - '.github/workflows/data-quality.yml'
+  pull_request:
+    paths:
+      - 'data/expenses.csv'
+      - '.github/workflows/data-quality.yml'
+
+jobs:
+  validate-expenses:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate expenses CSV
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          path = Path('data/expenses.csv')
+          expected = [
+              'TransactionID', 'Date', 'Department', 'Category', 'Supplier',
+              'Budget', 'ActualCost', 'CostType', 'Status'
+          ]
+
+          if not path.exists():
+              raise SystemExit('Missing data/expenses.csv')
+
+          with path.open(newline='', encoding='utf-8') as file:
+              reader = csv.DictReader(file)
+              if reader.fieldnames != expected:
+                  raise SystemExit(f'Unexpected columns: {reader.fieldnames}')
+              rows = list(reader)
+
+          if not rows:
+              raise SystemExit('The dataset must contain at least one row')
+
+          ids = [row['TransactionID'] for row in rows]
+          if len(ids) != len(set(ids)):
+              raise SystemExit('TransactionID values must be unique')
+
+          for row in rows:
+              if float(row['Budget']) < 0 or float(row['ActualCost']) < 0:
+                  raise SystemExit(f'Negative cost found in {row["TransactionID"]}')
+
+          print(f'Validated {len(rows)} expense transactions successfully.')
+          PY
