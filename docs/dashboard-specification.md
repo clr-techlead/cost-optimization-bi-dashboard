@@ -4,6 +4,15 @@
 
 The dashboard is designed for finance and business leaders who need to identify cost drivers, understand budget deviations, and prioritize savings actions.
 
+## Implementation status (as built)
+
+The live Power BI report ("Cost Optimization Executive Overview", published in Power BI Service) consolidated the original 3-page plan into 2 pages for a tighter narrative flow. What shipped:
+
+- **Executive Summary** page — combines the planned Page 1 (Executive Overview) KPIs and charts with narrative-driven titles and a headline banner stating the key insight (e.g. "Spend is 5.7% over budget, led by CloudCore").
+- **Transaction Detail** page — a full transaction table with native Power BI conditional formatting on the Status column (red = Over Budget, green = Within Budget), plus Department and Cost Type filters.
+- Corporate blue/gray visual style applied across both pages (navy header row, clean white cards).
+- Not yet implemented: icons on KPI cards, the decomposition tree and opportunity-ranking visuals from the original Page 2/Page 3 plans, and the semantic color system (blue/purple/amber/green) described below — these remain candidates for a future iteration.
+
 ## Page 1 — Executive Overview
 
 ### Primary questions
@@ -31,9 +40,8 @@ The dashboard is designed for finance and business leaders who need to identify 
 
 ### Recommended visuals
 
-- Decomposition tree from Budget Variance to Department, Category, Supplier, and Transaction
-- Category variance matrix
-- Supplier spend and variance table
+- Decomposition tree from Budget Variance to Department, Category, and Supplier
+- Category and supplier spend and variance table
 - Scatter plot comparing Actual Cost and Budget
 - Conditional formatting for high-risk transactions
 
