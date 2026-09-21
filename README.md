@@ -21,23 +21,24 @@ Turn raw expense data into actionable financial insights by answering:
 - Top Cost Drivers
 - Department Efficiency Score
 
-## Planned solution
+## Solution
 
-- Power BI executive dashboard
+- Power BI executive dashboard published to Power BI Service
 - Power Query data transformation
 - Star-schema semantic model
 - DAX measures for financial and operational KPIs
 - Synthetic dataset with realistic business scenarios
 - Documented assumptions and business definitions
+- Narrative-driven design: every page and chart title states the key insight at a glance
 
-## Dashboard sections
+## Dashboard pages
 
-1. Executive overview
-2. Budget versus actual analysis
-3. Cost-driver decomposition
-4. Department and supplier performance
-5. Savings opportunity prioritization
-6. Monthly trend and variance analysis
+1. **Executive Summary** — KPI cards (Total Budget, Actual Spend, Budget Variance, Over-Budget Rate, Savings Opportunity) plus budget, variance, and savings charts with insight-driven titles, summarized in a headline banner.
+2. **Transaction Detail** — Full transaction table with conditional formatting on Status (red = over budget, green = within budget), plus Department and Cost Type filters.
+
+## Screenshots
+
+_Coming soon._
 
 ## Technology stack
 
@@ -50,7 +51,7 @@ Turn raw expense data into actionable financial insights by answering:
 
 ## Project status
 
-🚧 Phase 1 — Business case and data model definition
+Executive dashboard built and published in Power BI Service — 2 pages, corporate blue/gray visual style, narrative storytelling banners, and conditional formatting on transaction status. Next: KPI card icons and the Power BI Desktop (.pbix) file added to this repo.
 
 ## Disclaimer
 
