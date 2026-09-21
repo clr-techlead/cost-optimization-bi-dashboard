@@ -38,7 +38,13 @@ Turn raw expense data into actionable financial insights by answering:
 
 ## Screenshots
 
-_Coming soon._
+### Executive Summary
+
+![Executive Summary page](docs/images/executive-summary.png)
+
+### Transaction Detail
+
+![Transaction Detail page](docs/images/transaction-detail.png)
 
 ## Technology stack
 
